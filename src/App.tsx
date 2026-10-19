@@ -19,14 +19,14 @@ function TabLayout() {
             <rect x="4" y="3" width="16" height="18" rx="2" />
             <path d="M8 8h8M8 12h8M8 16h5" />
           </svg>
-          Exercises
+          Cviky
         </NavLink>
         <NavLink to="/trainings" className="tab">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
             <circle cx="12" cy="13" r="8" />
             <path d="M12 9v4l2.5 2.5M9 2h6" />
           </svg>
-          Trainings
+          Tréningy
         </NavLink>
       </nav>
     </div>

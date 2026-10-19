@@ -34,7 +34,7 @@ export default function ExercisesPage() {
 
   return (
     <div className="page">
-      <h1 className="page-title">Exercises</h1>
+      <h1 className="page-title">Cviky</h1>
 
       <input
         className="search"
@@ -45,7 +45,7 @@ export default function ExercisesPage() {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      <div className="chips" role="group" aria-label="Categories">
+      <div className="chips" role="group" aria-label="Kategórie">
         <button type="button" className={`chip ${filter === 'all' ? 'chip-on' : ''}`} onClick={() => setFilter('all')}>
           All
         </button>
@@ -74,22 +74,22 @@ export default function ExercisesPage() {
         >
           <input
             autoFocus
-            placeholder="New category name"
-            aria-label="New category name"
+            placeholder="Názov novej kategórie"
+            aria-label="Názov novej kategórie"
             value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
           />
           <button type="submit" className="button button-small">Add</button>
           <button type="button" className="button button-small button-ghost" onClick={() => setAddingCategory(false)}>
-            Cancel
+            Zrušiť
           </button>
         </form>
       )}
 
       {visible.length === 0 ? (
         <EmptyState
-          title="No exercises here yet"
-          text="Add your first exercise to this category."
+          title="Zatiaľ žiadne cviky"
+          text="Pridať prvý cvik."
         />
       ) : (
         shownCategories.map((c) => (
@@ -107,7 +107,7 @@ export default function ExercisesPage() {
       )}
 
       <Link to="/exercises/new" className="fab">
-        + New exercise
+        + Nový cvik
       </Link>
     </div>
   )

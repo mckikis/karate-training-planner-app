@@ -10,13 +10,13 @@ export default function TrainingsPage() {
 
   return (
     <div className="page">
-      <h1 className="page-title">Trainings</h1>
+      <h1 className="page-title">Tréningy</h1>
 
       {trainings.length === 0 ? (
         <EmptyState
-          title="No trainings yet"
-          text="Pick exercises, set sets and rests, and see how long the training takes."
-          action={<Link to="/trainings/new" className="button button-primary">Create first training</Link>}
+          title="Žiadne dostupné tréningy"
+          text="Vyber cvičenia, zadaj série a počty opakovaní pre vypočítanie celkovej dĺžky tréningu."
+          action={<Link to="/trainings/new" className="button button-primary">Vytvoriť prvý tréning</Link>}
         />
       ) : (
         <ul className="list">
@@ -26,7 +26,8 @@ export default function TrainingsPage() {
                 <span className="row-main">
                   <span className="row-title">{t.name}</span>
                   <span className="row-sub">
-                    {formatDate(t.date)} · {t.items.length} exercises
+                    {formatDate(t.date)}
+                    {t.startTime && ` · ${t.startTime}`} · {t.items.length} exercises
                   </span>
                   {t.tag && <span className="tag">{t.tag}</span>}
                 </span>
@@ -38,7 +39,7 @@ export default function TrainingsPage() {
       )}
 
       {trainings.length > 0 && (
-        <Link to="/trainings/new" className="fab">+ New training</Link>
+        <Link to="/trainings/new" className="fab">+ Nový tréning</Link>
       )}
     </div>
   )

@@ -14,7 +14,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
+      includeAssets: ['iconLogo.png', 'apple-touch-icon.png'],
       manifest: {
         name: 'Karate Training Planner',
         short_name: 'Karate Planner',

@@ -59,7 +59,7 @@ export default function ExerciseFormPage() {
   function pickFile(file?: File) {
     if (!file) return
     if (file.size > MAX_MEDIA_MB * 1024 * 1024) {
-      setError(`The file is too big. Please use a photo or a short video under ${MAX_MEDIA_MB} MB.`)
+      setError(`Súbor je príliš veľký. Použi obrázok alebo krátke video pod ${MAX_MEDIA_MB} MB.`)
       return
     }
     setError('')
@@ -69,11 +69,11 @@ export default function ExerciseFormPage() {
 
   async function save() {
     if (!name.trim()) {
-      setError('Please enter a name.')
+      setError('Zadaj názov.')
       return
     }
     if (categoryId === undefined) {
-      setError('Please choose a category.')
+      setError('Vyber kategóriu.')
       return
     }
     const data = {
@@ -95,7 +95,7 @@ export default function ExerciseFormPage() {
 
   return (
     <div className="page page-form">
-      <TopBar title={editingId ? 'Edit exercise' : 'New exercise'} />
+      <TopBar title={editingId ? 'Upraviť cvik' : 'Nový cvik'} />
 
       <form
         className="form"
@@ -119,7 +119,7 @@ export default function ExerciseFormPage() {
         </label>
 
         <label className="field">
-          <span className="field-label">Description</span>
+          <span className="field-label">Popis</span>
           <textarea
             rows={3}
             value={description}
@@ -129,12 +129,12 @@ export default function ExerciseFormPage() {
         </label>
 
         <div className="field">
-          <span className="field-label">Photo, GIF or short video</span>
+          <span className="field-label">Obrázok, GIF alebo krátke video</span>
           {media ? (
             <div className="media-preview">
               <Media blob={media} type={mediaType} className="hero-media" />
               <button type="button" className="button button-small button-ghost" onClick={() => setMedia(undefined)}>
-                Remove
+                Vymazať
               </button>
             </div>
           ) : (
@@ -144,21 +144,21 @@ export default function ExerciseFormPage() {
                 accept="image/*,video/*"
                 onChange={(e) => pickFile(e.target.files?.[0])}
               />
-              <span>+ Add photo or video</span>
+              <span>+ Nahrať obrázok alebo video</span>
             </label>
           )}
         </div>
 
         <fieldset className="card">
-          <legend className="card-title">Default timing</legend>
-          <p className="hint">Used when you add this exercise to a training. You can change it there.</p>
+          <legend className="card-title">Predvolené časy</legend>
+          <p className="hint">Používajú sa, keď pridáš tento cvik do tréningu. Možnosť úpravy priamo v tréningu.</p>
           <TimingFields value={timing} onChange={setTiming} />
         </fieldset>
 
         {error && <p className="error" role="alert">{error}</p>}
 
         <div className="form-actions">
-          <button type="submit" className="button button-primary">Save exercise</button>
+          <button type="submit" className="button button-primary">Uložiť cvik</button>
         </div>
       </form>
     </div>

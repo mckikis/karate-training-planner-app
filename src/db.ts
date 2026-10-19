@@ -42,6 +42,7 @@ export interface Training {
   id: number
   name: string
   date: string // YYYY-MM-DD
+  startTime?: string // HH:MM, e.g. "17:00"
   tag: string
   description: string
   items: TrainingItem[]
@@ -94,63 +95,149 @@ const time = (sets: number, seconds: number, rest: number): Timing => ({
 })
 
 const STARTER: { category: string; exercises: [string, string, Timing][] }[] = [
-  { category: 'Karate punches', exercises: [
-    ['Kizami zuki', 'Front hand punch from fighting stance.', reps(3, 10, 1.5, 30)],
-    ['Gyaku zuki', 'Reverse punch with hip rotation.', reps(3, 10, 1.5, 30)],
-    ['Kizami + gyaku zuki', 'Combination: front hand, then reverse punch.', reps(3, 8, 2.5, 30)],
+  { category: 'Rozcvička', exercises: [
+    ['Rozklus a atletická abeceda', 'Rozklus, atletická abeceda - nízky, stredný, vysoký skipping, bočný cval, bojový postoj, predkopávanie, zakopávanie.', time(1, 180, 0)],
+    ['Zvieratá', 'Žaba, kačka, pavúk, opica, gorila, preskoky do strán.', time(2, 30, 15)],
+    ['Akrobácia', 'Kotúľ vpred, vzad, pády na zem', time(4, 30, 15)],
+    ['Rozudieranie', '', time(4, 30, 15)],
+    ['Rozkopanie', '', time(4, 30, 15)],
   ] },
-  { category: 'Karate kicks', exercises: [
-    ['Mae geri', 'Front kick, pull the knee up first.', reps(3, 10, 2, 30)],
-    ['Mawashi geri', 'Roundhouse kick to the body or head.', reps(3, 10, 2.5, 30)],
-    ['Ura mawashi geri', 'Hook kick to the head.', reps(3, 8, 3, 30)],
+
+  { category: 'Dynamický strečing', exercises: [
+    ['Leg swings', 'Rovné a bočné výkopy nôh o stenu.', reps(2, 10, 1.5, 15)],
+    ['Hamstringové príťahy', '', reps(2, 10, 1.5, 15)],
+    ['Výpad s pretočením do bočného výpadu', '', reps(2, 8, 3, 15)],
+    ['Pozdrav slnku', 'Preručkujem do pozície psa, prejdem do striešky, nohami prídem k rukám.', reps(2, 8, 3, 15)],
+    ['Nohy kopy rozcvička', '', reps(2, 8, 3, 15)],
   ] },
-  { category: 'Reaction', exercises: [
-    ['Clap reaction', 'Coach claps, kids attack as fast as possible.', time(4, 20, 30)],
-    ['Ball drop catch', 'Partner drops a tennis ball, catch it before the second bounce.', reps(3, 10, 2, 30)],
+
+  { category: 'Údery - karate', exercises: [
+    ['Kizami zuki', 'Úder prednou rukou.', reps(3, 10, 1.5, 30)],
+    ['Gyaku zuki', 'Úder zadnou rukou na hlavu/brucho.', reps(3, 10, 1.5, 30)],
+    ['Kizami+gyaku zuki', 'Klasické Kizami+gyaku.', reps(3, 8, 2.5, 30)],
+    ['1,2 na prednej nohe', 'Kizami+gyaku na prednej nohe, japonský štýl.', reps(3, 8, 2.5, 30)],
+    ['Hodené gyaku', 'Stiahnutie prednej ruky, následný úder s prekrokom zadnej nohy.', reps(3, 8, 2.5, 30)],
+    ['Prekročené gyaku', 'Hodené gyaku zuki+gyaku zuki z opačného garde.', reps(3, 8, 2.5, 30)],
+    ['Kizami - úhyb + kontra', '', reps(3, 10, 1.5, 30)],
+    ['Hodené - úhyb + kontra', '', reps(3, 10, 1.5, 30)],
+    ['Úder - diai', '', reps(3, 10, 1.5, 30)],
+    ['Diai + druhá vlna', '', reps(3, 10, 1.5, 30)],
+    ['Cukačka + úhyb + úder ', '', reps(3, 10, 1.5, 30)],
+    ['Doprava + nástup', 'Hodené, kizami, giaku..', reps(3, 10, 1.5, 30)],
+    ['Doľava + nástup', 'Prekročené, kizami..', reps(3, 10, 1.5, 30)],
   ] },
-  { category: 'Footwork', exercises: [
-    ['Stance bouncing', 'Light bouncing in fighting stance.', time(3, 30, 20)],
-    ['Step in, step out', 'Quick step forward and back, keep the guard up.', time(3, 30, 20)],
+
+  { category: 'Kopy - karate', exercises: [
+    ['Mawashi geri', '', reps(3, 10, 2.5, 30)],
+    ['Mawashi + ushiro ura', 'Alebo ushiro mawashi.', reps(3, 10, 2.5, 30)],
+    ['Ura mawashi geri', '', reps(3, 8, 3, 30)],
+    ['Yoko geri + ura', '', reps(3, 10, 2, 30)],
+    ['Kopy na lapy', '', reps(3, 10, 2, 30)],
+    ['Mawashi - úhyb + kontra', 'Čudan alebo džodan', reps(3, 10, 1.5, 30)],
+    ['Mawashi spam - úhyb + kontra', '', reps(3, 10, 1.5, 30)],
+    ['Kopy z klinča', '', reps(3, 10, 1.5, 30)],
+    ['Kop diai', '', reps(3, 10, 1.5, 30)],
+    ['Doprava + kop', '', reps(3, 10, 1.5, 30)],
+    ['Doľava + kop', '', reps(3, 10, 1.5, 30)],
   ] },
-  { category: 'Warm-up', exercises: [
-    ['Light jogging', 'Easy running around the dojo.', time(1, 180, 0)],
-    ['Jumping jacks', 'Keep a steady rhythm.', time(2, 30, 15)],
+
+
+  { category: 'Kombinácie - karate', exercises: [
+    ['Kizami + ura', '', reps(3, 10, 2.5, 30)],
+    ['Mawashi čudan + úder', '', reps(3, 10, 2.5, 30)],
+    ['Hodené + podkýnačka', '', reps(3, 8, 3, 30)],
   ] },
-  { category: 'Games', exercises: [
-    ['Tail tag', 'Everyone has a belt as a tail, try to catch the others.', time(1, 240, 0)],
-    ['Sumo push', 'Push the partner out of the circle.', time(3, 45, 30)],
+
+  { category: 'Podkýnačky - karate', exercises: [
+    ['Kizami + ura + podkýnačka', '', reps(3, 10, 2.5, 30)],
+    ['Mawashi chytím + podkýnačka', '', reps(3, 10, 2.5, 30)],
+    ['Hodené + podkýnačka', '', reps(3, 8, 3, 30)],
+    ['Kizami + úhyb + podkýnačka', 'Súper robí kizami, druhý na uhne, v klinči spraví ashi barai.', reps(3, 10, 2.5, 30)],
   ] },
-  { category: 'Plyometrics', exercises: [
-    ['Box jumps', 'Jump onto a box, step down.', reps(4, 8, 3, 60)],
-    ['Skater jumps', 'Side jumps from one leg to the other.', reps(3, 10, 2, 45)],
+
+  { category: 'Reakcia', exercises: [
+    ['Chytanie loptičiek', 'Sparingpartner pustí loptičku z jednej, druhej alebo oboch rúk naraz -> chytenie loptičiek.', time(4, 20, 30)],
+    ['Nástupy na znamenie', 'Sparingpartner ukáže rukou na časť tela, musí udrieť alebo kopnúť na danú časť.', reps(3, 10, 2, 30)],
+    ['Chytanie rúk', '', reps(3, 10, 2, 30)],
   ] },
-  { category: 'Strength – upper body', exercises: [
-    ['Push-ups', 'Body in a straight line.', reps(3, 10, 2, 45)],
-    ['Plank', 'Hold, do not drop the hips.', time(3, 30, 30)],
+
+  { category: 'Pohyb a obrana', exercises: [
+    ['Tlak ruky vpred', 'Jeden tlačí do druhého s vystretými rukami, druhý sa hýbe, medzitým údery/uhýbačky.', time(4, 30, 15)],
+    ['Vzdialenosť', 'Jeden udáva vzialenosť pohybom, druhý ho nasleduje.', time(4, 30, 15)],
+    ['Bloky na mieste', 'Jeden útočí, druhý blokuje nástupy na mieste.', time(4, 30, 15)],
   ] },
-  { category: 'Strength – legs', exercises: [
-    ['Squats', 'Knees in line with the toes.', reps(3, 15, 2, 45)],
-    ['Lunges', 'Alternate legs.', reps(3, 10, 2.5, 45)],
+
+  { category: 'Zápasové situácie', exercises: [
+    ['Zápas', '', time(4, 45, 30)],
+    ['Diaisti a útočníci', '', time(4, 60, 60)],
+    ['Útočníci a obrancovia', '', time(4, 60, 60)],
+    ['15 sekúnd do konca', '', time(8, 15, 10)],
+    ['Hansoku chui', '', time(4, 15, 30)],
+    ['Úder + diai noha', 'Druhý medzitým zatlačí.', time(4, 15, 30)],
   ] },
-  { category: 'Mobility', exercises: [
+
+  { category: 'Taktika', exercises: [
+    ['Natlačenie z rohu', 'Natlačím sa na súpera, nástup.', time(4, 45, 30)],
+    ['Pohyb v rohoch', 'Pohyb z rohu do rohu, medzitým nástup.', time(4, 45, 30)],
+    ['Vylákanie nástupu', 'Vylákam súpera aby zaútočil, reagujem na jeho úder.', time(4, 45, 30)],
+  ] },
+
+  { category: 'Hry', exercises: [
+    ['Mrázik', 'Chytení hráči stoja v shiko-dachi, môžu byť vyslobodení podlezením nôh.', time(1, 240, 0)],
+    ['Gargamel a šmolkovia', 'Gargamel chytá hráčov kužeľkou, víla môže vyslobodiť chytených šmolkov krúžkom tak, že ho musia preliezť.', time(1, 240, 0)],
+    ['Chytanie nôh', 'Hráči chcú chytiť druhým hráčom nohu, tí musia spraviť 3 angličáky a tak môžu pokračovať v hre.', time(1, 240, 0)],
+    ['Kužeľky', 'Hráči rozedelení do tímov alebo jednotlivo, musia pozbierať čo najviac kuželiek (po jednej).', time(1, 240, 0)],
+    ['Paličky', 'Hráči stoja do kruhu pri paličkách, na povel musia chytiť paličku vedľa seba.', time(1, 240, 0)],
+    ['Sumo push', 'Vytlačiť hráča von z kruhu.', time(3, 30, 30)],
+    ['Preskakovanie kamaráta', 'Jeden hráč leží na čiare, druhý ho preskočí a ľahne si na najbližiu čiaru, opakujeme.', time(1, 120, 30)],
+  ] },
+
+  { category: 'Plyometria', exercises: [
+    ['Výskoky na bedňu', '', reps(4, 8, 3, 60)],
+    ['Korčuľovanie', 'Plynulé skoky do strán', reps(3, 10, 2, 45)],
+    ['Skoky do diaľky', '', reps(3, 10, 2, 45)],
+    ['Preskakovanie prekážok', '', reps(3, 10, 2, 45)],
+    ['Frekvenčný rebrík', '', reps(3, 10, 2, 45)],
+    ['Séza + skoky do diaľky', 'Plynulé skoky do strán', reps(3, 10, 2, 45)],
+    ['Zoskok z bedne', 'Zoskok do stabilnej polohy + skoky do diaľky.', reps(4, 8, 3, 60)],
+  ] },
+
+  { category: 'Mobilita', exercises: [
     ['Hip circles', 'Big circles in both directions.', time(2, 30, 10)],
     ['Ankle mobility', 'Knee over the toes, heel on the floor.', time(2, 30, 10)],
   ] },
-  { category: 'Static stretching', exercises: [
-    ['Seated forward bend', 'Legs straight, reach for the toes.', time(2, 30, 10)],
-    ['Butterfly stretch', 'Soles together, knees down.', time(2, 30, 10)],
+
+  { category: 'Silové - vrch', exercises: [
+    ['Kliky', '', reps(3, 10, 2, 45)],
+    ['TRX príťahy', '', time(3, 30, 30)],
+    ['Tricepsové dipy', '', time(3, 30, 30)],
   ] },
-  { category: 'Dynamic stretching', exercises: [
-    ['Leg swings', 'Front and side swings, both legs.', reps(2, 10, 1.5, 15)],
-    ['Walking lunge with twist', 'Rotate the upper body over the front leg.', reps(2, 8, 3, 15)],
+
+  { category: 'Silové - nohy', exercises: [
+    ['Drepy', '', reps(3, 15, 2, 45)],
+    ['Sisi drepy', '', reps(3, 15, 2, 45)],
+    ['Shiko-dachi repy', '', reps(3, 15, 2, 45)],
+    ['Výpady', '', reps(3, 10, 2.5, 45)],
+    ['Copenhagen plank', '', reps(3, 10, 2, 45)],
   ] },
-  { category: 'Tactics', exercises: [
-    ['Counter-attack drill', 'Partner attacks, answer with a counter.', time(4, 60, 30)],
-    ['Distance control', 'Keep the right distance, attack when the partner steps in.', time(3, 60, 30)],
+
+  { category: 'Core', exercises: [
+    ['Plank', '', reps(3, 10, 2, 45)],
+    ['Bočný plank', '', reps(3, 10, 2, 45)],
+    ['Horolezec', '', reps(3, 15, 2, 45)],
+    ['Russian twist', 'Premiestňujem závažie z jednej strany na druhú, nohy sú nad zemou.', reps(3, 10, 2, 45)],
+    ['Medveď', 'Na 4, kolená sú nad zemou, prehadzujem loptičku z jednej do druhej ruky.', time(3, 30, 30)],
   ] },
-  { category: 'Fight situations', exercises: [
-    ['Points fight', 'Short fight to points.', time(4, 60, 60)],
-    ['Last 10 seconds', 'Losing by one point, 10 seconds left.', time(4, 10, 30)],
+
+  { category: 'Statický strečing', exercises: [
+    ['Špagát', '', time(2, 30, 10)],
+    ['Prekážkový sed', '', time(2, 30, 10)],
+    ['Shiko-dachi', '', time(2, 30, 10)],
+    ['Shiko-dachi na zemi', '', time(2, 30, 10)],
+    ['Motýlik', '', time(2, 30, 10)],
+    ['Pigeon', '', time(2, 30, 10)],
+    ['Predklon v sede', '', time(2, 30, 10)],
+    ['Ježiško', '', time(2, 30, 10)],
   ] },
 ]
 

@@ -1,13 +1,13 @@
 /* Colors */
 :root {
-  --bg: #3a3335;
-  --bg-deep: #2e2829;
-  --card: #001d4a;
-  --selected: #27476e;
+  --bg: #1B2021;
+  --bg-deep: #1B2021;
+  --card: #30343f;
+  --selected: #575D90;
   --text: #f2f4ff;
   --muted: #c3c7da;
-  --line: #4d5675;
-  --accent: #b20d30;
+  --line: #575D90;
+  --accent: #6320EE;
   --accent-text: #ffffff;
   --radius: 14px;
 
@@ -314,18 +314,29 @@ textarea {
 }
 
 .thumb {
-  width: 44px;
-  height: 44px;
   flex-shrink: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   object-fit: cover;
   background: var(--selected);
+}
+
+/* Size of exercise pictures in lists */
+.thumb-medium {
+  width: 72px;
+  height: 72px;
+}
+
+/* Size of exercise pictures in the training plan */
+.thumb-large {
+  width: 104px;
+  height: 104px;
 }
 
 .thumb-letter {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 26px;
   font-weight: 700;
 }
 
@@ -338,6 +349,15 @@ textarea {
   background: var(--selected);
   font-size: 12px;
   font-weight: 600;
+}
+
+/* Type of training on the training screen */
+.tag-large {
+  margin: 4px 0 8px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* ---------- Buttons ---------- */
@@ -501,7 +521,7 @@ textarea {
 .hero-media {
   display: block;
   width: 100%;
-  max-height: 320px;
+  max-height: 420px;
   object-fit: contain;
   border-radius: var(--radius);
   background: var(--bg-deep);
@@ -624,11 +644,24 @@ textarea {
   font-size: 14px;
 }
 
-.item-name {
+.item-title {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-name {
   font-size: 17px;
   font-weight: 700;
+}
+
+.item-clock {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
 }
 
 .item-time {
@@ -682,7 +715,7 @@ textarea {
 /* Training plan */
 .plan {
   list-style: none;
-  margin: 0;
+  margin: 16px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -692,19 +725,39 @@ textarea {
 .plan-row {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
+  gap: 14px;
+  padding: 12px;
   border-radius: var(--radius);
   background: var(--card);
 }
 
-.plan-start {
-  width: 44px;
-  flex-shrink: 0;
-  font-size: 13px;
+/* "17:17 – 17:20" above the exercise name */
+.plan-clock {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ff8fa6;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Break between two exercises */
+.plan-break {
+  margin: 8px 0 0;
+  padding-left: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--muted);
-  font-variant-numeric: tabular-nums;
+}
+
+/* Total time at the end of the training */
+.total-small {
+  margin: 20px 0 0;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.total-small strong {
+  color: var(--text);
 }
 
 /* Exercise picker */

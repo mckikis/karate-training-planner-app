@@ -1,5 +1,5 @@
 import type { Mode, Timing } from '../db'
-import { NumberField } from '../components'
+import { DurationField, NumberField } from '../components'
 
 /** Sets, reps or time, and rest – shared by the exercise form and the training form. */
 export function TimingFields<T extends Timing>({ value, onChange }: { value: T; onChange: (value: T) => void }) {
@@ -7,7 +7,7 @@ export function TimingFields<T extends Timing>({ value, onChange }: { value: T; 
 
   return (
     <div className="timing">
-      <div className="segmented" role="group" aria-label="Measure by">
+      <div className="segmented" role="group" aria-label="Merať podľa">
         {(['reps', 'time'] as Mode[]).map((mode) => (
           <button
             key={mode}
@@ -16,7 +16,7 @@ export function TimingFields<T extends Timing>({ value, onChange }: { value: T; 
             aria-pressed={value.mode === mode}
             onClick={() => set({ mode })}
           >
-            {mode === 'reps' ? 'Reps' : 'Time'}
+            {mode === 'reps' ? 'Opakovania' : 'Čas'}
           </button>
         ))}
       </div>
@@ -35,11 +35,10 @@ export function TimingFields<T extends Timing>({ value, onChange }: { value: T; 
             />
           </>
         ) : (
-          <NumberField
+          <DurationField
             label="One set"
             value={value.workSeconds}
             onChange={(workSeconds) => set({ workSeconds })}
-            suffix="s"
           />
         )}
         <NumberField

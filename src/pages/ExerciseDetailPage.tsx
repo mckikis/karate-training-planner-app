@@ -37,17 +37,17 @@ export default function ExerciseDetailPage() {
       {exercise.description && <p className="body-text">{exercise.description}</p>}
 
       <section className="card">
-        <h2 className="card-title">Default timing</h2>
+        <h2 className="card-title">Predvolené časy</h2>
         <dl className="facts">
-          <div><dt>Sets</dt><dd>{timingSummary(exercise)}</dd></div>
-          <div><dt>One set</dt><dd>{formatDuration(setSeconds)}</dd></div>
-          <div><dt>Rest between sets</dt><dd>{exercise.restBetweenSets} s</dd></div>
+          <div><dt>Série</dt><dd>{timingSummary(exercise)}</dd></div>
+          <div><dt>Jedna séria</dt><dd>{formatDuration(setSeconds)}</dd></div>
+          <div><dt>Oddych</dt><dd>{exercise.restBetweenSets} s</dd></div>
         </dl>
-        <p className="hint">You can change these numbers in each training.</p>
+        <p className="hint">Je možné zmeniť pri každom tréningu.</p>
       </section>
 
       <button type="button" className="button button-danger-ghost" onClick={remove}>
-        Delete exercise
+        Vymazať cvik
       </button>
     </div>
   )
