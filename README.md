@@ -20,6 +20,9 @@ https://mckikis.github.io/karate-training-planner-app/
 
 On iPhone: open the address in Safari → Share → **Add to Home Screen**.
 
-## Tech
-
-React, TypeScript, Vite, vite-plugin-pwa, Dexie.js (IndexedDB), React Router.
+```bash
+git add .
+git commit -m "Slovak exercises and app texts"
+git pull --no-rebase --no-edit
+git push
+```
